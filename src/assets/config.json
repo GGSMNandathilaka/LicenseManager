@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "salesOrderNo": 236896,
-    "sellToCusNo": 6001459,
+    "salesOrderNo": "236896",
+    "sellToCusNo": "6001459",
     "sellToCusName": "Scanvaegt Systems AB",
-    "shipToCusNo": 100035,
+    "shipToCusNo": "100035",
     "shipToCusName": "Guldfugl AB",
     "createdDate": "22-01-2017",
     "products": [
       {
         "id": 1,
-        "no": 83904050,
+        "no": "83904050",
         "name": "PlusFlex 2.5 - Operator Interface per terminal",
         "quantity": 6
       },
       {
         "id": 2,
-        "no": 83904350,
+        "no": "83904350",
         "name": "PlusFlex 2.5 - Intermec Service, per printer",
         "quantity": 6
       }
@@ -25,16 +25,16 @@
   },
   {
     "id": 2,
-    "salesOrderNo": 236916,
-    "sellToCusNo": 5901459,
+    "salesOrderNo": "236916",
+    "sellToCusNo": "5901459",
     "sellToCusName": "Frimesa Cooperativa Central",
-    "shipToCusNo": 5901459,
+    "shipToCusNo": "5901459",
     "shipToCusName": "Frimesa Cooperativa Central",
     "createdDate": "25-01-2017",
     "products": [
       {
         "id": 3,
-        "no": 2611030110,
+        "no": "2611030110",
         "name": "Checkweigher SC510, T1, Wi400, W600, C6kg/2g",
         "quantity": 6
       }
@@ -43,10 +43,10 @@
   },
   {
     "id": 3,
-    "salesOrderNo": 236811,
-    "sellToCusNo": 6001459,
+    "salesOrderNo": "236811",
+    "sellToCusNo": "236811",
     "sellToCusName": "Scanvaegt Systems AB",
-    "shipToCusNo": 100071,
+    "shipToCusNo": "100071",
     "shipToCusName": "Petersen",
     "createdDate": "20-02-2017",
     "products": [],
@@ -54,10 +54,10 @@
   },
   {
     "id": 4,
-    "salesOrderNo": 236811,
-    "sellToCusNo": 5901459,
+    "salesOrderNo": "236811",
+    "sellToCusNo": "5901459",
     "sellToCusName": "Frimesa Cooperativa Central",
-    "shipToCusNo": 100071,
+    "shipToCusNo": "100071",
     "shipToCusName": "Petersen",
     "createdDate": "20-02-2017",
     "products": [],

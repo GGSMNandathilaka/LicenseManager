@@ -22,6 +22,8 @@ export class LicenseSearchComponent implements OnInit {
   filteredSellToCusNumbers: any;
   filteredShipToCusNumbers: any;
 
+  searchResult: any;
+
   constructor(private orderHandler: OrderHandlerService) {
     this.salesOrderCtrl = new FormControl();
     this.sellToCusCtrl = new FormControl();
@@ -30,17 +32,14 @@ export class LicenseSearchComponent implements OnInit {
     this.filteredSalesOrders = this.salesOrderCtrl.valueChanges
       .startWith(null)
       .map(name => this.filterSalesOrders(name));
-    console.log('filteredSalesOrders:', this.filteredSalesOrders);
 
     this.filteredSellToCusNumbers = this.sellToCusCtrl.valueChanges
       .startWith(null)
       .map(name => this.filterSellToCusNumbers(name));
-    console.log('filteredSellToCusNumbers:', this.filteredSellToCusNumbers);
 
     this.filteredShipToCusNumbers = this.shipToCusCtrl.valueChanges
       .startWith(null)
       .map(name => this.filterShipToCusNumbers(name));
-    console.log('filteredShipToCusNumbers:', this.filteredShipToCusNumbers);
   }
 
   ngOnInit() {
@@ -61,4 +60,66 @@ export class LicenseSearchComponent implements OnInit {
     return val ? this.shipToCusNumbers.filter((s) => new RegExp(val, 'gi').test(s)) : this.shipToCusNumbers;
   }
 
+  search() {
+    console.log('value1:', this.salesOrderCtrl.value);
+    console.log('value2:', this.sellToCusCtrl.value);
+    console.log('value3:', this.shipToCusCtrl.value);
+
+    this.searchResult = [];
+    if (this.salesOrderCtrl.value !== null) {
+      let result = this.searchFromSalesOrderNo(this.salesOrderCtrl.value);
+      if (result) {
+        for (let i = 0; i < result.length; i++) {
+          this.searchResult.push(result[i]);
+        }
+      }
+    }
+    else if (this.sellToCusCtrl.value !== null) {
+      let result = this.searchFromSellToCusNo(this.sellToCusCtrl.value);
+      if (result) {
+        for (let i = 0; i < result.length; i++) {
+          this.searchResult.push(result[i]);
+        }
+      }
+    }
+    else if (this.shipToCusCtrl.value !== null) {
+      let result = this.searchFromShipToCusNo(this.shipToCusCtrl.value);
+      if (result) {
+        for (let i = 0; i < result.length; i++) {
+          this.searchResult.push(result[i]);
+        }
+      }
+    }
+    console.log('search-result:', this.searchResult);
+  }
+
+  searchFromSalesOrderNo(value: string) {
+    let result = [];
+    for (let i = 0; i < this.license.length; i++) {
+      if (this.license[i].salesOrderNo === value) {
+        result.push(this.license[i]);
+      }
+    }
+    return result;
+  }
+
+  searchFromSellToCusNo(value: string) {
+    let result = [];
+    for (let i = 0; i < this.license.length; i++) {
+      if (this.license[i].sellToCusNo === value) {
+        result.push(this.license[i]);
+      }
+    }
+    return result;
+  }
+
+  searchFromShipToCusNo(value: string) {
+    let result = [];
+    for (let i = 0; i < this.license.length; i++) {
+      if (this.license[i].shipToCusNo === value) {
+        result.push(this.license[i]);
+      }
+    }
+    return result;
+  }
 }

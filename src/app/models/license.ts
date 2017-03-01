@@ -2,10 +2,10 @@ import {Product} from "./product";
 
 export class License {
   id: number;
-  salesOrderNo: number;
-  sellToCusNo: number;
+  salesOrderNo: string;
+  sellToCusNo: string;
   sellToCusName: string;
-  shipToCusNo: number;
+  shipToCusNo: string;
   shipToCusName: string;
   createdDate: string;
   products: Product;
