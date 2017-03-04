@@ -1,49 +1,66 @@
 <md-card>
-  <md-card-header>
-    <md-card-title>Search Panel</md-card-title>
-    <md-card-subtitle>Search Orders...</md-card-subtitle>
-  </md-card-header>
+  <md-chip-list class="mat-chip-list-stacked">
+    <md-chip
+      selected="true"
+      color="primary"
+      class="md-chip-header">
+      Search Orders
+    </md-chip>
+  </md-chip-list>
   <md-card-content>
     <div>
-      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxFlex>
-        <div fxLayout="row">
-          <div fxFlex fxLayoutAlign="space-around">
-            <md-input-container>
-              <input mdInput placeholder="Sales Order No" [mdAutocomplete]="auto1" [formControl]="salesOrderCtrl">
-            </md-input-container>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxFlex>
+              <md-input-container>
+                <input mdInput placeholder="Sales Order No" [mdAutocomplete]="auto1" [formControl]="salesOrderCtrl">
+              </md-input-container>
 
-            <md-autocomplete #auto1="mdAutocomplete">
-              <md-option *ngFor="let salesOrder of filteredSalesOrders | async" [value]="salesOrder">
-                {{ salesOrder }}
-              </md-option>
-            </md-autocomplete>
-          </div>
-          <div fxFlex fxLayoutAlign="space-around">
-            <md-input-container>
-              <input mdInput placeholder="Sell To Customer No" [mdAutocomplete]="auto2" [formControl]="sellToCusCtrl">
-            </md-input-container>
+              <md-autocomplete #auto1="mdAutocomplete">
+                <md-option *ngFor="let salesOrder of filteredSalesOrders | async" [value]="salesOrder">
+                  {{ salesOrder }}
+                </md-option>
+              </md-autocomplete>
+            </div>
+            <div fxFlex>
+              <md-input-container>
+                <input mdInput placeholder="Sell To Customer No" [mdAutocomplete]="auto2" [formControl]="sellToCusCtrl">
+              </md-input-container>
 
-            <md-autocomplete #auto2="mdAutocomplete">
-              <md-option *ngFor="let sellToCusNo of filteredSellToCusNumbers | async" [value]="sellToCusNo">
-                {{ sellToCusNo }}
-              </md-option>
-            </md-autocomplete>
+              <md-autocomplete #auto2="mdAutocomplete">
+                <md-option *ngFor="let sellToCusNo of filteredSellToCusNumbers | async" [value]="sellToCusNo">
+                  {{ sellToCusNo }}
+                </md-option>
+              </md-autocomplete>
+            </div>
           </div>
         </div>
-        <div fxLayout="row">
-          <div fxFlex fxLayoutAlign="space-around">
-            <md-input-container>
-              <input mdInput placeholder="Ship To Customer No" [mdAutocomplete]="auto3" [formControl]="shipToCusCtrl">
-            </md-input-container>
+        <div fxFlex>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxFlex>
+              <md-input-container>
+                <input mdInput placeholder="Ship To Customer No" [mdAutocomplete]="auto3" [formControl]="shipToCusCtrl">
+              </md-input-container>
 
-            <md-autocomplete #auto3="mdAutocomplete">
-              <md-option *ngFor="let shipToCusNo of filteredShipToCusNumbers | async" [value]="shipToCusNo">
-                {{ shipToCusNo }}
-              </md-option>
-            </md-autocomplete>
-          </div>
-          <div fxFlex>
-            <button md-raised-button color="primary" (click)="search()">Search</button>
+              <md-autocomplete #auto3="mdAutocomplete">
+                <md-option *ngFor="let shipToCusNo of filteredShipToCusNumbers | async" [value]="shipToCusNo">
+                  {{ shipToCusNo }}
+                </md-option>
+              </md-autocomplete>
+            </div>
+            <div fxFlex>
+              <div fxLayout="row" fxLayoutAlign="space-around">
+                <div fxFlex>
+                  <button md-raised-button color="primary" (click)="search()">Search</button>
+                </div>
+                <div fxFlex>
+                  <button md-raised-button (click)="refresh()" class="refresh-bg-color">
+                    <md-icon class="example-icon">refresh</md-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -51,10 +68,55 @@
   </md-card-content>
 </md-card>
 
-<md-card *ngFor="let result of searchResult" class="search-result-card">
-  <md-card-content>
-    <div>{{result.salesOrderNo}}</div>
-    <div>{{result.sellToCusName}}</div>
-    <div>{{result.shipToCusName}}</div>
-  </md-card-content>
-</md-card>
+<div *ngIf="searchResult && searchResult.length > 0">
+  <md-card *ngFor="let result of searchResult" (click)="onClickResult(result)">
+    <md-card-content>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxFlex>
+              <div class="label-text pad-10-btm">Sales Order No.</div>
+              <div class="primary-text pad-10-btm">{{result.salesOrderNo}}</div>
+            </div>
+            <div fxFlex>
+              <div class="label-text pad-10-btm">Sell To Customer No.</div>
+              <div class="primary-text pad-10-btm">{{result.sellToCusNo}}</div>
+            </div>
+            <div fxFlex>
+              <div class="label-text pad-10-btm">Ship To Customer No.</div>
+              <div class="primary-text pad-10-btm">{{result.shipToCusName}}</div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex>
+          <div fxLayout="row" fxLayoutAlign="space-around">
+            <div fxFlex>
+              <div class="label-text  pad-10-btm">Sell To Customer Name</div>
+              <div class="primary-text pad-10-btm">{{result.sellToCusName}}</div>
+            </div>
+            <div fxFlex>
+              <div class="label-text pad-10-btm">Ship To Customer Name</div>
+              <div class="primary-text pad-10-btm">{{result.shipToCusName}}</div>
+            </div>
+            <div fxFlex>
+              <div class="label-text pad-10-btm">Generated License Files</div>
+              <div class="primary-text pad-10-btm">{{result.noOfGeneratedFiles}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div>{{result.salesOrderNo}}</div>-->
+      <!--<div>{{result.sellToCusName}}</div>-->
+      <!--<div>{{result.shipToCusName}}</div>-->
+    </md-card-content>
+  </md-card>
+</div>
+<div *ngIf="searchResult && searchResult.length === 0 && !isRefresh">
+  <md-card>
+    <md-card-content>
+      <div class="warn-text">No Search Results</div>
+    </md-card-content>
+  </md-card>
+</div>
+
+

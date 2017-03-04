@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OrderHandlerService} from "../../services/order-handler.service";
 import {License} from "../../models/license";
 import {FormControl} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-license-search',
@@ -23,8 +24,10 @@ export class LicenseSearchComponent implements OnInit {
   filteredShipToCusNumbers: any;
 
   searchResult: any;
+  isRefresh: boolean = false;
 
-  constructor(private orderHandler: OrderHandlerService) {
+  constructor(private orderHandler: OrderHandlerService,
+              private router: Router) {
     this.salesOrderCtrl = new FormControl();
     this.sellToCusCtrl = new FormControl();
     this.shipToCusCtrl = new FormControl();
@@ -66,6 +69,7 @@ export class LicenseSearchComponent implements OnInit {
     console.log('value3:', this.shipToCusCtrl.value);
 
     this.searchResult = [];
+    this.isRefresh = false;
     if (this.salesOrderCtrl.value !== null) {
       let result = this.searchFromSalesOrderNo(this.salesOrderCtrl.value);
       if (result) {
@@ -121,5 +125,19 @@ export class LicenseSearchComponent implements OnInit {
       }
     }
     return result;
+  }
+
+  onClickResult(result) {
+    console.log('clicked-result:', result);
+    let url = 'search-result/' + result.id;
+    this.router.navigate([url]);
+  }
+
+  refresh() {
+    this.isRefresh = true;
+    this.searchResult = [];
+    this.salesOrderCtrl.reset();
+    this.sellToCusCtrl.reset();
+    this.shipToCusCtrl.reset();
   }
 }

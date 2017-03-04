@@ -3,7 +3,25 @@ md-card {
 }
 
 .search-result-card {
-  width: 400px;
+  background-color: #dcdcdc;
 }
+
+.md-chip-header {
+  margin-bottom: 20px;
+}
+
+.refresh-bg-color {
+  background-color: gainsboro;
+}
+
+.pad-10-btm {
+  padding-bottom: 10px;
+}
+
+.pad-5-btm {
+  padding-bottom: 5px;
+}
+
+
 
 

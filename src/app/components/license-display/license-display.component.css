@@ -1,0 +1,46 @@
+md-card {
+  margin-top: 20px;
+  width: 70%;
+}
+
+.pad-10-btm {
+  padding-bottom: 10px;
+}
+
+.pad-5-btm {
+  padding-bottom: 5px;
+}
+
+.pad-20-btm {
+  padding-bottom: 20px;
+}
+
+.md-chip-header {
+  margin-bottom: 20px;
+}
+
+.pad-20-top {
+  margin-top: 20px;
+}
+
+.heading-text-color {
+  color: #4a4a4a;
+  background-color: #b3b3b3;
+  padding: 10px;
+}
+
+.table-entry {
+  background-color: #dcdcdc;
+  padding: 10px;
+}
+
+md-input-container {
+  width: 100%;
+}
+
+.help-bg-color {
+  background-color: gainsboro;
+}
+
+
+

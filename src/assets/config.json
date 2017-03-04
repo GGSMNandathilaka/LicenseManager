@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "salesOrderNo": "236896",
     "sellToCusNo": "6001459",
     "sellToCusName": "Scanvaegt Systems AB",
@@ -24,7 +24,7 @@
     "noOfGeneratedFiles": 7
   },
   {
-    "id": 2,
+    "id": "2",
     "salesOrderNo": "236916",
     "sellToCusNo": "5901459",
     "sellToCusName": "Frimesa Cooperativa Central",
@@ -42,7 +42,7 @@
     "noOfGeneratedFiles": 1
   },
   {
-    "id": 3,
+    "id": "3",
     "salesOrderNo": "236811",
     "sellToCusNo": "236811",
     "sellToCusName": "Scanvaegt Systems AB",
@@ -53,7 +53,7 @@
     "noOfGeneratedFiles": 0
   },
   {
-    "id": 4,
+    "id": "4",
     "salesOrderNo": "236811",
     "sellToCusNo": "5901459",
     "sellToCusName": "Frimesa Cooperativa Central",
@@ -62,5 +62,23 @@
     "createdDate": "20-02-2017",
     "products": [],
     "noOfGeneratedFiles": 0
+  },
+  {
+    "id": "5",
+    "salesOrderNo": "44848949",
+    "sellToCusNo": "5901459",
+    "sellToCusName": "Frimesa Cooperativa Central",
+    "shipToCusNo": "5901459",
+    "shipToCusName": "Frimesa Cooperativa Central",
+    "createdDate": "25-01-2017",
+    "products": [
+      {
+        "id": 3,
+        "no": "2611030110",
+        "name": "Checkweigher SC510, T1, Wi400, W600, C6kg/2g",
+        "quantity": 6
+      }
+    ],
+    "noOfGeneratedFiles": 1
   }
 ]

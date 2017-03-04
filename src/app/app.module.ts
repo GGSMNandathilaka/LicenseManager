@@ -7,10 +7,12 @@ import {AppComponent} from './app.component';
 import {OrderHandlerService} from "./services/order-handler.service";
 import {MaterialModule, MdToolbarModule, MdCardModule} from "@angular/material";
 import {LicenseSearchModule} from "./components/license-search/license-search.module";
+import {routing} from "./app.routing";
+import {LicenseDisplayModule} from "./components/license-display/license-display.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +21,9 @@ import {LicenseSearchModule} from "./components/license-search/license-search.mo
     MaterialModule,
     MdToolbarModule,
     MdCardModule,
-    LicenseSearchModule
+    LicenseSearchModule,
+    LicenseDisplayModule,
+    routing
   ],
   providers: [
     OrderHandlerService

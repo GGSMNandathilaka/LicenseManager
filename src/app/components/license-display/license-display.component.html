@@ -1,0 +1,109 @@
+<div fxLayout="row" fxLayoutAlign="center">
+  <md-card *ngIf="searchResult">
+    <md-chip-list class="mat-chip-list-stacked">
+      <md-chip
+        selected="true"
+        color="primary"
+        class="md-chip-header">
+        Order Details
+      </md-chip>
+    </md-chip-list>
+    <md-card-content>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFlex class="label-text pad-10-btm">Sales Order No.</div>
+            <div fxFlex class="primary-text pad-10-btm">{{searchResult?.salesOrderNo}}</div>
+          </div>
+        </div>
+        <div fxFlex>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFlex class="label-text pad-10-btm">Sell To Customer No.</div>
+            <div fxFlex class="primary-text pad-10-btm">{{searchResult?.sellToCusNo}}</div>
+          </div>
+        </div>
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFlex class="label-text pad-10-btm">Sell To Customer Name</div>
+            <div fxFlex class="primary-text pad-10-btm">{{searchResult?.sellToCusName}}</div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFlex class="label-text pad-10-btm">Ship To Customer No.</div>
+            <div fxFlex class="primary-text pad-10-btm">{{searchResult?.shipToCusNo}}</div>
+          </div>
+        </div>
+        <div fxFlex>
+          <div fxLayout="row">
+            <div fxFlex class="label-text pad-10-btm">Ship To Customer Name</div>
+            <div fxFlex class="primary-text pad-10-btm">{{searchResult?.shipToCusName}}</div>
+          </div>
+        </div>
+      </div>
+      <md-chip-list class="mat-chip-list-stacked">
+        <md-chip
+          selected="true"
+          color="primary"
+          class="md-chip-header pad-20-top">
+          Products and Modules
+        </md-chip>
+      </md-chip-list>
+      <div fxLayout="row" class="pad-10-btm">
+        <div fxFlex="25%" class="label-text heading-text-color">Product No</div>
+        <div fxFlex="60%" class="label-text heading-text-color">Product Description</div>
+        <div fxFlex="15%" fxLayoutAlign="end" class="label-text heading-text-color">Quantity</div>
+      </div>
+      <div fxLayout="row" class="pad-5-btm" *ngFor="let product of searchResult?.products">
+        <div fxFlex="25%" class="primary-text table-entry">{{product.no}}</div>
+        <div fxFlex="60%" class="primary-text table-entry">{{product.name}}</div>
+        <div fxFlex="15%" fxLayoutAlign="end" class="primary-text table-entry">{{product.quantity}}</div>
+      </div>
+      <md-chip-list class="mat-chip-list-stacked">
+        <md-chip
+          selected="true"
+          color="primary"
+          class="md-chip-header pad-20-top">
+          Information about the Machine
+        </md-chip>
+      </md-chip-list>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
+        <div fxFlex>
+          <md-input-container>
+            <input mdInput placeholder="Machine Name">
+          </md-input-container>
+        </div>
+        <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
+          <button md-button (click)="openDialog()" class="help-bg-color">Help</button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
+        <div fxFlex>
+          <md-input-container>
+            <input mdInput placeholder="Machine UUID">
+          </md-input-container>
+        </div>
+        <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
+          <button md-button (click)="openDialog()" class="help-bg-color">Help</button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
+        <div fxFlex>
+          <md-input-container>
+            <input mdInput placeholder="Extra Data">
+          </md-input-container>
+        </div>
+        <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
+          <button md-button (click)="openDialog()" class="help-bg-color">Help</button>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+</div>
+
