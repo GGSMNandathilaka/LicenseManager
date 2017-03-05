@@ -76,7 +76,7 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
         <div fxFlex>
           <md-input-container>
-            <input mdInput placeholder="Machine Name">
+            <input mdInput placeholder="Machine Name" [formControl]="machineNameCtrl">
           </md-input-container>
         </div>
         <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
@@ -86,7 +86,7 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
         <div fxFlex>
           <md-input-container>
-            <input mdInput placeholder="Machine UUID">
+            <input mdInput placeholder="Machine UUID" [formControl]="machineUUIDCtrl">
           </md-input-container>
         </div>
         <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
@@ -96,12 +96,15 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="pad-10-btm">
         <div fxFlex>
           <md-input-container>
-            <input mdInput placeholder="Extra Data">
+            <input mdInput placeholder="Extra Data" [formControl]="extraDataCtrl">
           </md-input-container>
         </div>
         <div fxFlex fxLayoutAlign="center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start">
           <button md-button (click)="openDialog()" class="help-bg-color">Help</button>
         </div>
+      </div>
+      <div fxLayout="row">
+        <button md-button (click)="createFile()" class="help-bg-color">Create License File</button>
       </div>
     </md-card-content>
   </md-card>
