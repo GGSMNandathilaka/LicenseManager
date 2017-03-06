@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderHandlerService} from "./services/order-handler.service";
 import {License} from "./models/license";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,11 @@ import {License} from "./models/license";
 })
 export class AppComponent {
 
+  constructor(private router: Router) {
+
+  }
+
+  onClick() {
+    this.router.navigateByUrl('');
+  }
 }

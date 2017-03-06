@@ -52,10 +52,10 @@
             <div fxFlex>
               <div fxLayout="row" fxLayoutAlign="space-around">
                 <div fxFlex>
-                  <button md-raised-button color="primary" (click)="search()">Search</button>
+                  <button md-raised-button color="primary" (click)="search()" class="hover-click">Search</button>
                 </div>
                 <div fxFlex>
-                  <button md-raised-button (click)="refresh()" class="refresh-bg-color">
+                  <button md-raised-button (click)="refresh()" class="refresh-bg-color hover-click">
                     <md-icon class="example-icon">refresh</md-icon>
                   </button>
                 </div>
@@ -69,7 +69,7 @@
 </md-card>
 
 <div *ngIf="searchResult && searchResult.length > 0">
-  <md-card *ngFor="let result of searchResult" (click)="onClickResult(result)">
+  <md-card *ngFor="let result of searchResult" (click)="onClickResult(result)" class="hover-click">
     <md-card-content>
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
         <div fxFlex>
@@ -84,7 +84,7 @@
             </div>
             <div fxFlex>
               <div class="label-text pad-10-btm">Ship To Customer No.</div>
-              <div class="primary-text pad-10-btm">{{result.shipToCusName}}</div>
+              <div class="primary-text pad-10-btm">{{result.shipToCusNo}}</div>
             </div>
           </div>
         </div>

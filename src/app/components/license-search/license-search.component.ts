@@ -70,30 +70,73 @@ export class LicenseSearchComponent implements OnInit {
 
     this.searchResult = [];
     this.isRefresh = false;
-    if (this.salesOrderCtrl.value !== null) {
-      let result = this.searchFromSalesOrderNo(this.salesOrderCtrl.value);
-      if (result) {
-        for (let i = 0; i < result.length; i++) {
-          this.searchResult.push(result[i]);
+
+    // check result is null or not todo this should be move into backend
+    if ((this.salesOrderCtrl.value !== null && this.salesOrderCtrl.value !== '')
+      && (this.sellToCusCtrl.value === null || this.sellToCusCtrl.value === '')
+      && (this.shipToCusCtrl.value === null || this.shipToCusCtrl.value === '')) {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].salesOrderNo === this.salesOrderCtrl.value) {
+          this.searchResult.push(this.license[i]);
         }
       }
     }
-    else if (this.sellToCusCtrl.value !== null) {
-      let result = this.searchFromSellToCusNo(this.sellToCusCtrl.value);
-      if (result) {
-        for (let i = 0; i < result.length; i++) {
-          this.searchResult.push(result[i]);
+    else if (this.salesOrderCtrl.value !== null && this.salesOrderCtrl.value !== ''
+      && this.sellToCusCtrl.value !== null && this.sellToCusCtrl.value !== ''
+      && (this.shipToCusCtrl.value === null || this.shipToCusCtrl.value === '')) {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].salesOrderNo === this.salesOrderCtrl.value && this.license[i].sellToCusNo === this.sellToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
         }
       }
     }
-    else if (this.shipToCusCtrl.value !== null) {
-      let result = this.searchFromShipToCusNo(this.shipToCusCtrl.value);
-      if (result) {
-        for (let i = 0; i < result.length; i++) {
-          this.searchResult.push(result[i]);
+    else if (this.salesOrderCtrl.value !== null && this.salesOrderCtrl.value !== ''
+      && (this.sellToCusCtrl.value === null || this.sellToCusCtrl.value === '')
+      && this.shipToCusCtrl.value !== null && this.shipToCusCtrl.value !== '') {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].salesOrderNo === this.salesOrderCtrl.value && this.license[i].shipToCusNo === this.shipToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
         }
       }
     }
+    else if (this.salesOrderCtrl.value !== null && this.salesOrderCtrl.value !== ''
+      && this.sellToCusCtrl.value !== null && this.sellToCusCtrl.value !== ''
+      && this.shipToCusCtrl.value !== null && this.shipToCusCtrl.value !== '') {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].salesOrderNo === this.salesOrderCtrl.value && this.license[i].sellToCusNo === this.sellToCusCtrl.value
+          && this.license[i].shipToCusNo === this.shipToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
+        }
+      }
+    }
+    else if ((this.salesOrderCtrl.value === null || this.salesOrderCtrl.value === '')
+      && this.sellToCusCtrl.value !== null && this.sellToCusCtrl.value !== ''
+      && this.shipToCusCtrl.value !== null && this.shipToCusCtrl.value !== '') {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].sellToCusNo === this.sellToCusCtrl.value && this.license[i].shipToCusNo === this.shipToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
+        }
+      }
+    }
+    else if ((this.salesOrderCtrl.value === null || this.salesOrderCtrl.value === '')
+      && (this.sellToCusCtrl.value === null || this.sellToCusCtrl.value === '')
+      && this.shipToCusCtrl.value !== null && this.shipToCusCtrl.value !== '') {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].shipToCusNo === this.shipToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
+        }
+      }
+    }
+    else if ((this.salesOrderCtrl.value === null || this.salesOrderCtrl.value === '')
+      && this.sellToCusCtrl.value !== null && this.sellToCusCtrl.value !== ''
+      && (this.shipToCusCtrl.value === null || this.shipToCusCtrl.value === '')) {
+      for (let i = 0; i < this.license.length; i++) {
+        if (this.license[i].sellToCusNo === this.sellToCusCtrl.value) {
+          this.searchResult.push(this.license[i]);
+        }
+      }
+    }
+
     console.log('search-result:', this.searchResult);
   }
 

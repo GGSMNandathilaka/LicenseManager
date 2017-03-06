@@ -26,3 +26,8 @@
   font-weight: 600;
   white-space: nowrap;
 }
+
+.hover-click {
+  cursor: pointer;
+}
+

@@ -9,6 +9,8 @@ import {MaterialModule, MdToolbarModule, MdCardModule} from "@angular/material";
 import {LicenseSearchModule} from "./components/license-search/license-search.module";
 import {routing} from "./app.routing";
 import {LicenseDisplayModule} from "./components/license-display/license-display.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {LicenseDisplayModule} from "./components/license-display/license-display
     MdCardModule,
     LicenseSearchModule,
     LicenseDisplayModule,
-    routing
+    routing,
+    FlexLayoutModule.forRoot(),
+    RouterModule
   ],
   providers: [
     OrderHandlerService
